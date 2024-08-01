@@ -18,6 +18,11 @@ function TextForm(props) {
     setText(newText);
     console.log("Upper case");
   };
+  const handleCopyClick = () => {
+    let copyText = document.getElementById("myBox");
+    copyText.select();
+    navigator.clipboard.writeText(copyText.value);
+  };
 
   const handleOnChange = (event) => {
     setText(event.target.value); //This will be used whenever we use text area. This is for taking text as input in this case. This says when the user types something in the textbox, set the value = text.
@@ -49,6 +54,13 @@ function TextForm(props) {
           onClick={handleLowClick}
         >
           Convert to lowercase
+        </button>
+        <button
+          type="button"
+          className="btn btn-success mx-3"
+          onClick={handleCopyClick}
+        >
+          Copy
         </button>
         <button
           type="button"
