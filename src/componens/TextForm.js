@@ -23,6 +23,10 @@ function TextForm(props) {
     copyText.select();
     navigator.clipboard.writeText(copyText.value);
   };
+  const handleExtraSpaces = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  };
 
   const handleOnChange = (event) => {
     setText(event.target.value); //This will be used whenever we use text area. This is for taking text as input in this case. This says when the user types something in the textbox, set the value = text.
@@ -61,6 +65,13 @@ function TextForm(props) {
           onClick={handleCopyClick}
         >
           Copy
+        </button>
+        <button
+          type="button"
+          className="btn btn-danger mx-3"
+          onClick={handleExtraSpaces}
+        >
+          Remove extra spaces
         </button>
         <button
           type="button"
