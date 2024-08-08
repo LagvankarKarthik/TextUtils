@@ -43,6 +43,10 @@ function TextForm(props) {
             value={text}
             rows="8"
             onChange={handleOnChange}
+            style={{
+              backgroundColor: props.mode === "light" ? "white" : "#0e031c",
+              color: props.mode === "light" ? "black" : "white",
+            }}
           ></textarea>
         </div>
         <button
@@ -92,7 +96,7 @@ function TextForm(props) {
           {text.split(" ").length * 0.008} minutes to read.
         </p>
         <h3>Preview</h3>
-        <p>{text}</p>
+        <p>{text.length === 0 ? "Enter your text in the box bove" : text}</p>
       </div>
     </>
   );
