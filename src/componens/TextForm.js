@@ -7,25 +7,28 @@ function TextForm(props) {
     let newText = text.toUpperCase();
     setText(newText);
     console.log("Upper case");
+    props.showAlert(" Converrted to uppercase", "success");
   };
   const handleLowClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
-    console.log("Upper case");
+    props.showAlert(" Converrted to lowerrcase", "success");
   };
   const handleClearClick = () => {
     let newText = "";
     setText(newText);
-    console.log("Upper case");
+    props.showAlert(" Cleared textbox", "success");
   };
   const handleCopyClick = () => {
     let copyText = document.getElementById("myBox");
     copyText.select();
     navigator.clipboard.writeText(copyText.value);
+    props.showAlert(" Text copied", "success");
   };
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert(" Extra spaces cleared", "success");
   };
 
   const handleOnChange = (event) => {
