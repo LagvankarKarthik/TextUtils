@@ -1,9 +1,11 @@
+import React from "react";
 import { useState } from "react";
 import "./App.css";
-//import About from "./componens/About";
+import About from "./componens/About";
 import Navbar from "./componens/Navbar";
 import Alert from "./componens/Alert";
 import TextForm from "./componens/TextForm";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light"); //This is to check wheather the dark mode is enbled or not
@@ -30,21 +32,56 @@ function App() {
       setAlert(null);
     }, 1500);
   };
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <>
+          <Navbar
+            title="TextUtils"
+            aboutText="About us"
+            mode={mode}
+            toggleMode={toggleMode}
+          />
+          ,<TextForm />,
+        </>
+      ),
+    },
+    {
+      path: "/about",
+      element: (
+        <>
+          <Navbar
+            title="TextUtils"
+            aboutText="About us"
+            mode={mode}
+            toggleMode={toggleMode}
+          />
+          <About />,
+        </>
+      ),
+    },
+    {
+      path: "/texutils",
+      element: (
+        <>
+          <Navbar
+            title="TextUtils"
+            aboutText="About us"
+            mode={mode}
+            toggleMode={toggleMode}
+          />
+          <TextForm />,
+        </>
+      ),
+    },
+  ]);
+
   return (
     <div>
-      <Navbar
-        title="TextUtils"
-        aboutText="About us"
-        mode={mode}
-        toggleMode={toggleMode}
-      />
       <Alert alert={alert} />
-      <TextForm
-        showAlert={showAlert}
-        heading="Enter your text here:"
-        mode={mode}
-      />
-      {/*<About />*/}
+      <RouterProvider router={router} />
     </div>
   );
 }
