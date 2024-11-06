@@ -44,7 +44,8 @@ function App() {
             mode={mode}
             toggleMode={toggleMode}
           />
-          ,<TextForm />,
+          <Alert alert={alert} />
+          ,<TextForm mode={mode} />,
         </>
       ),
     },
@@ -58,12 +59,13 @@ function App() {
             mode={mode}
             toggleMode={toggleMode}
           />
+          <Alert alert={alert} />
           <About />,
         </>
       ),
     },
     {
-      path: "/texutils",
+      path: "/textutils",
       element: (
         <>
           <Navbar
@@ -72,7 +74,8 @@ function App() {
             mode={mode}
             toggleMode={toggleMode}
           />
-          <TextForm />,
+          <Alert alert={alert} />
+          <TextForm mode={mode} />,
         </>
       ),
     },
@@ -80,7 +83,6 @@ function App() {
 
   return (
     <div>
-      <Alert alert={alert} />
       <RouterProvider router={router} />
     </div>
   );
