@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import About from "./componens/About";
 import Navbar from "./componens/Navbar";
@@ -45,7 +44,7 @@ function App() {
             toggleMode={toggleMode}
           />
           <Alert alert={alert} />
-          ,<TextForm mode={mode} />,
+          ,<TextForm mode={mode} showAlert={showAlert} />,
         </>
       ),
     },
@@ -60,7 +59,7 @@ function App() {
             toggleMode={toggleMode}
           />
           <Alert alert={alert} />
-          <About />,
+          <About mode={mode} />,
         </>
       ),
     },
@@ -75,7 +74,7 @@ function App() {
             toggleMode={toggleMode}
           />
           <Alert alert={alert} />
-          <TextForm mode={mode} />,
+          <TextForm mode={mode} showAlert={showAlert} />,
         </>
       ),
     },

@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+/* Styles for tablets (screen width 768px or smaller) */
+@media (max-width: 768px) {
+  .App-header {
+    font-size: calc(8px + 2vmin);
+    padding: 20px;
+  }
+  .App-logo {
+    height: 30vmin;
+  }
+}
+
+/* Styles for mobile devices (screen width 480px or smaller) */
+@media (max-width: 480px) {
+  .App-header {
+    font-size: calc(6px + 2vmin);
+    padding: 15px;
+  }
+  .App-logo {
+    height: 25vmin;
+  }
+  .App-link {
+    font-size: 14px;
+  }
+}

@@ -22,6 +22,7 @@ function TextForm(props) {
   const handleCopyClick = () => {
     let copyText = document.getElementById("myBox");
     copyText.select();
+    document.getSelection().removeAllRanges();
     navigator.clipboard.writeText(copyText.value);
     props.showAlert(" Text copied", "success");
   };
@@ -37,11 +38,11 @@ function TextForm(props) {
 
   return (
     <>
-      <div className="container my-3">
+      <div className="container my-3 mx-3">
         <h1>{props.heading}</h1>
         <div className="mb-3">
           <textarea
-            className="form-control"
+            className="form-control "
             id="myBox"
             value={text}
             rows="8"
@@ -54,36 +55,41 @@ function TextForm(props) {
         </div>
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-primary my-3 mx-3"
           onClick={handleUpClick}
+          disabled={text.length === 0}
         >
           Convert to Uppercase
         </button>
         <button
           type="button"
-          className="btn btn-primary mx-3"
+          className="btn btn-primary my-3 mx-3"
           onClick={handleLowClick}
+          disabled={text.length === 0}
         >
           Convert to lowercase
         </button>
         <button
           type="button"
-          className="btn btn-success mx-3"
+          className="btn btn-success my-3 mx-3"
           onClick={handleCopyClick}
+          disabled={text.length === 0}
         >
           Copy
         </button>
         <button
           type="button"
-          className="btn btn-danger mx-3"
+          className="btn btn-danger my-3 mx-3"
           onClick={handleExtraSpaces}
+          disabled={text.length === 0}
         >
           Remove extra spaces
         </button>
         <button
           type="button"
-          className="btn btn-danger mx-3"
+          className="btn btn-danger my-3 mx-3"
           onClick={handleClearClick}
+          disabled={text.length === 0}
         >
           Clear text
         </button>
@@ -91,12 +97,24 @@ function TextForm(props) {
       <div className="container my-3">
         <h3>Your text summery</h3>
         <p>
-          Your text has {text.split(" ").length} words, and {text.length}{" "}
-          charecters.
+          Your text has{" "}
+          {
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          words, and {text.length} charecters.
         </p>
         <p>
-          It will take {text.split(" ").length * 2.4} seconds or{" "}
-          {text.split(" ").length * 0.008} minutes to read.
+          It will take{" "}
+          {text.split(" ").filter((element) => {
+            return element.length !== 0;
+          }).length * 0.2}{" "}
+          seconds or{" "}
+          {text.split(" ").filter((element) => {
+            return element.length !== 0;
+          }).length * 0.0033}{" "}
+          minutes to read.
         </p>
         <h3>Preview</h3>
         <p>{text.length === 0 ? "Enter your text in the box bove" : text}</p>
